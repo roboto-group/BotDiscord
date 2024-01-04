@@ -2,10 +2,10 @@ const { ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.j
 
 module.exports = {
   name: 'ban',
-  'description': 'Banir quem tirar onda!',
+  description: 'Banir quem estiver tirando onda no servidor!',
   // 'devOnly': Boolean,
   // 'testOnly': Boolean,
-  // 'deleted': Boolean,
+  //'deleted': true,
   options: [
     {
       name: 'target-user',
@@ -20,8 +20,8 @@ module.exports = {
       type: ApplicationCommandOptionType.String,
     }
   ],
-  'permitionRequired': [PermissionFlagsBits.Administrator],
-
+  'permissionsRequired': [PermissionFlagsBits.Administrator],
+  'botPermissions': [PermissionFlagsBits.Administrator],
   callback: (client, interaction) => {
     interaction.reply('Ban...');
   },
