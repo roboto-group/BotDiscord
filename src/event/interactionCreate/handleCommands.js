@@ -1,4 +1,3 @@
-const { Application } = require('discord.js');
 const { testServer, devs } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
 
@@ -8,7 +7,7 @@ module.exports = async (client, interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
   const localCommands = getLocalCommands();
-
+  
   try {
 
     const commandObject = localCommands.find(
