@@ -23,6 +23,8 @@ const client = new Client({
     eventHandler(client);
     
     client.login(process.env.TOKEN);
+
+    
   
   } catch (error) {
     console.log(`Error: ${error}`);  
