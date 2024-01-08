@@ -1,6 +1,5 @@
 const { Client, Interaction, ApplicationCommandOptionType, AttachmentBuilder } = require("discord.js");
 const { Font, RankCardBuilder } = require('canvacord');
-const {writeFileSync} = require('fs/promises');
 const calculateLevelXp = require('../../utils/calculateLevelXp');
 const Level = require('../../models/Level');
 
@@ -81,21 +80,6 @@ module.exports = {
       format: 'png'
     });
 
-   /*
-    const rank2 = new RankCardBuilder()
-      .setDisplayName(targetUserObject.user.displayName)
-      .setUsername(targetUserObject.user.username)
-      .setAvatar(targetUserObject.user.displayAvatarURL())
-      .setRank(currentRank)
-      .setLevel(fetchedLevel.level)
-      .setCurrentXP(fetchedLevel.xp)
-      .setRequiredXP(calculateLevelXp(fetchedLevel.level))
-      .setStatus(targetUserObject.presence.status)
-      //
-      .setDiscriminator(targetUserObject.user.discriminator);
-    
-    
-    */
 
     //criando um anexo com o data
     const attachment = new AttachmentBuilder(data);

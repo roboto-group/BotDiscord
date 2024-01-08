@@ -1,32 +1,33 @@
-const {ApplicationCommandOptionType} = require('discord.js');
+const { ApplicationCommandOptionType, Client, Events, GuildMember } = require('discord.js');
 
 
 module.exports = {
-  name: 'welcome',
-  description: 'Manda um boas vindas para o novo usuario',
+  name: 'pede-cpf',
+  description: 'Saúda o no novo membro e solicita seu cpf.',
   //devOnly: Boolean,
   //testOnly: Boolean,
   //deleted: Boolean,
-  require: true,
-  ephemeral: true,
+  
   options: [
     {
       name: 'cpf',
-      description: 'pede o cpf do user.',
+      description: 'Digite seu CPF:',
       type: ApplicationCommandOptionType.String,
-      
+      require: true,
+      ephemeral: true,
     }
   ],
-
-  callback: async (client, interaction) => {
-    interaction.deferReply();
+  /**
+   * 
+   * @param {Client} client 
+   * @param {Events} event 
+   */
+  callback: async (client, event) => {
+    console.log(event)
     // coletando o timestamp da deferReply
-    const valorCpf = await interaction.options.get('cpf').value
-
-    
-    interaction.editReply({
-      content: `O valor do COF digitado foi ${valorCpf}.`
-    })
+    //const valorCpf = interaction.
+    console.log(GuildMember.name)
+   
       
   }
 }

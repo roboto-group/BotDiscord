@@ -1,14 +1,13 @@
-const { Client, Interaction} = require('discord.js');
+const { Client, GuildMember, Interaction } = require('discord.js');
 const cpfCollector = require('../../commands/misc/cpfCollector');
-const welcome = require('../../commands/misc/cpfCollector')
 
 /**
- * 
+ * @param {Interaction} interaction
  * @param {Client} client 
- * @param {Interaction} interaction 
+ * @param {GuildMember} member 
  */
-module.exports = (client, interaction) => {
+module.exports = async (client, interaction) => {
   
-  
+  await cpfCollector.callback(client, interaction)
 
 };
