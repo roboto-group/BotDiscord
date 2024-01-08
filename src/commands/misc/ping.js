@@ -7,6 +7,7 @@ module.exports = {
   //deleted: Boolean,
 
   callback: async (client, interaction) => {
+    
     await interaction.deferReply();
     // coletando o timestamp da deferReply
     const reply = await interaction.fetchReply();
@@ -17,5 +18,5 @@ module.exports = {
       content: `Pong! Cliente: ${ping}ms | Websocket: ${client.ws.ping}ms.`
     })
       
-  }
-}
+  },
+};

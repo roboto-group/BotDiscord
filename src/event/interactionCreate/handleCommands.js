@@ -5,7 +5,8 @@ const getLocalCommands = require('../../utils/getLocalCommands');
 module.exports = async (client, interaction) => {
   //é comando de chat?
   if (!interaction.isChatInputCommand()) return;
-
+  
+  
   const localCommands = getLocalCommands();
   
   try {
@@ -16,7 +17,7 @@ module.exports = async (client, interaction) => {
 
     //é um comando existente?
     if (!commandObject) return;
-
+    
     //comando é apenas para devs?
     if (commandObject.devOnly) {
       if (!devs.includes(interaction.member.id)) {
@@ -38,7 +39,7 @@ module.exports = async (client, interaction) => {
         return;
       };
     };
-
+    
     //Usuário tem permissão?
     if (commandObject.permissionsRequired?.length) {
       for (const permission of commandObject.permissionsRequired) {
@@ -52,8 +53,11 @@ module.exports = async (client, interaction) => {
       };
     };
 
+    
+    
     //Bot tem permissão?
     if (commandObject.botPermissions?.length) {
+      
       for (const permission of commandObject.botPermissions) {
         const bot = interaction.guild.members.me;
 
@@ -65,10 +69,11 @@ module.exports = async (client, interaction) => {
           return;
         }
       };
-      //Execução do comando.
-      await commandObject.callback(client, interaction);
+      
     };
-
+    
+    //Execução do comando.
+    await commandObject.callback(client, interaction);
 
   } catch (error) {
     console.log(`Houve um erro ao executar esse comando: ${error}`)

@@ -50,7 +50,7 @@ module.exports = {
     // Banir usuário alvo :D
     try {
       await targetUser.ban({ reason });
-      await interaction.editReply(`O usuário ${targetUser} foi benido.\nMotivo: ${reason}`)
+      await interaction.editReply(`O usuário ${targetUser} foi banido.\nMotivo: ${reason}`)
     } catch (error) {
       console.log(`Houve um erro no banimento: ${error}`);
     };

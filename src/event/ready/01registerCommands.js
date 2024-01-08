@@ -10,7 +10,7 @@ module.exports = async (client) => {
     const localCommands = getLocalCommands();
     const applicationCommands = await getApplicationCommands(client, testServer)
     
-
+    
     
 
     for (const localCommand of localCommands) {
@@ -19,7 +19,7 @@ module.exports = async (client) => {
       const existingCommand = await applicationCommands.cache.find(
         (cmd) => cmd.name === name
       )
-        
+      
       if (existingCommand) {
         if (localCommand.deleted) {
           await applicationCommands.delete(existingCommand.id);
