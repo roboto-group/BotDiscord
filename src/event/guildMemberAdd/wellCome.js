@@ -9,6 +9,6 @@ const welcome = require('../../commands/misc/cpfCollector')
  */
 module.exports = (client, interaction) => {
   
-  const valorCPF = cpfCollector.callback(client, interaction)
+  
 
 };

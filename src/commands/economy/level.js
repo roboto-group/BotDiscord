@@ -57,16 +57,14 @@ module.exports = {
 
 
     Font.loadDefault();
-    //Vamos pegar o index do usuário pelo seu ID.
-    //Como o index começa em zero adicionamos 1 ao currentRank
-    
     
     if (!targetUserObject.presence?.status) {
       var userPresence = 'offline' 
     } else {
       var userPresence = 'online'
     } 
-    console.log(targetUserObject.user.discriminator)
+    //Vamos pegar o index do usuário pelo seu ID.
+    //Como o index começa em zero adicionamos 1 ao currentRank
     var currentRank = allLevels.findIndex((lvl) => lvl.userId === targetUserId) + 1
     const rank = new RankCardBuilder()
       .setUsername(targetUserObject.user.username)
