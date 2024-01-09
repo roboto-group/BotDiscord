@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType, Client, Events, GuildMember } = require('discord.js');
+const { ApplicationCommandOptionType, Client, Events, GuildMember, Interaction } = require('discord.js');
 
 
 module.exports = {
@@ -18,16 +18,16 @@ module.exports = {
     }
   ],
   /**
-   * 
+   * @param {Interaction} interaction 
    * @param {Client} client 
    * @param {Events} event 
    */
-  callback: async (client, event) => {
-    console.log(event)
-    // coletando o timestamp da deferReply
+  callback: async (client, event, interaction) => {
+    console.log('Dentro do Coletor de CPF')
+    const cpf = interaction.options.getString("texto", true)
     //const valorCpf = interaction.
-    console.log(GuildMember.name)
-   
-      
   }
 }
+    
+   
+      

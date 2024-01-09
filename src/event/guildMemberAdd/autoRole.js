@@ -10,7 +10,7 @@ module.exports = async (client, member) => {
   try {
     var guild = member.guild;
     if (!guild) return;
-
+  
     const autoRole = await Autorole.findOne({ guildId: guild.id })
     //Se não houver um match
     if (!autoRole) return;
