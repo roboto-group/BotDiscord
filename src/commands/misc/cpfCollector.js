@@ -18,13 +18,15 @@ module.exports = {
     }
   ],
   /**
-   * @param {Interaction} interaction 
+   * @param {Interaction} interaction
    * @param {Client} client 
    * @param {Events} event 
    */
-  callback: async (client, event, interaction) => {
+  callback: async (client, interaction) => {
     console.log('Dentro do Coletor de CPF')
-    const cpf = interaction.options.getString("texto", true)
+    console.log(interaction)
+    
+    
     //const valorCpf = interaction.
   }
 }
