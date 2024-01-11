@@ -6,7 +6,6 @@ module.exports = async (client, interaction) => {
   //é comando de chat?
   if (!interaction.isChatInputCommand()) return;
   
-  
   const localCommands = getLocalCommands();
   
   try {
@@ -53,8 +52,6 @@ module.exports = async (client, interaction) => {
       };
     };
 
-    
-    
     //Bot tem permissão?
     if (commandObject.botPermissions?.length) {
       

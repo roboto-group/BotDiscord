@@ -10,7 +10,8 @@ module.exports = async (client, member) => {
   try {
     var guild = member.guild;
     if (!guild) return;
-  
+    
+    
     const autoRole = await Autorole.findOne({ guildId: guild.id })
     //Se não houver um match
     if (!autoRole) return;
@@ -18,6 +19,6 @@ module.exports = async (client, member) => {
     await member.roles.add(autoRole.roleId)
 
   } catch (error) {
-    console.log(`Erro ao dar cargo automaticamente: ${error}`)
+    console.log(`Erro ao dar cargo automaticamente: ${error}`);
   }
 };

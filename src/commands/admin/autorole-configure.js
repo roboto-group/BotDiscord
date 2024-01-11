@@ -23,15 +23,17 @@ module.exports = {
 
       var autorole = await Autorole.findOne({  guildId: interaction.guild.id });
 
-      //Checando no BD se há um registro com esse mesmo guildId
       if (autorole) {
+        //Checando no BD se há um registro com esse mesmo cargo
         if (autorole.roleId === targetRoleId) {
           interaction.editReply('Autorole já foi configurado para esse cargo. Para desabilitar, execute "/autoerole-disable"')
           return;
         }
+
         // Se a condição acima for falsa
         autorole.roleId = targetRoleId;
       
+        
       } else {
         autorole = new Autorole({
           roleId: targetRoleId,
