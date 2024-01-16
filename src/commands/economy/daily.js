@@ -30,7 +30,7 @@ module.exports = {
       //criando a consulta
       var query = {
         userId: interaction.user.id,
-        guildId: interaction.user.id,
+        guildId: interaction.guild.id,
       };
 
       //fazendo a consulta ao BD
