@@ -18,12 +18,12 @@ const client = new Client({
 (async() => {
   try {
     mongoose.set('strictQuery', false);
-    await mongoose.connect('mongodb+srv://robotofap:1pMcQRdBec4qgCto@roboto.hqtaheu.mongodb.net/?retryWrites=true&w=majority');
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('Connected to DB.');
     
     eventHandler(client);
     
-    client.login('MTE4NjQyMzY3MzgyMTg1NTc1NA.GbqsPd.JDRBt4PGMrDLXHbURnXoYyQCeKK_p0KGNiT-GQ');
+    client.login(process.env.TOKEN);
 
     
   
