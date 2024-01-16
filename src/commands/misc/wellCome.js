@@ -26,8 +26,7 @@ module.exports = {
 
       //criando a consulta
       let query = {
-        userId: interaction.user.id,
-        guildId: interaction.user.id,
+        cpf: cpf
       };
 
       //fazendo a consulta ao BD
@@ -35,44 +34,44 @@ module.exports = {
 
       //Se o usuario existir no BD
       if (user) {
-        //const lastDailyDate = user.lastDaily.toDateString();
-        //const currentDate = new Date().toDateString();
-        console.log('Usuario já consta no banco de dados!')
-        if (user.cpf !== cpf) {
+        console.log('Achei seu CPF no banco de dados!')
+        
+        // Verificando se o userId e o guildId estão vazios no BD e atualizando-os.
+        console.log(user.userId)
+        if (!user.userId) {
+          console.log('userId do Discord foi vinculado ao CPF')
+          user.userId = interaction.user.id
+          if (!user.guildId) {
+            console.log('guildId atualizado!');
+            user.guildId = interaction.guild.id;
+          }
+          console.log('Atualizações salves do Banco de Dados.');
+          await user.save();
+        }; 
           
-          interaction.editReply(`CPF: ${cpf} não cadastrado!`);
+        //resposta ao usuário
+        interaction.editReply(
+          `${user.userName} é um aluno do curso de ${user.curso} do turno da ${user.horario}.`
+        );
+        
+        const novoUser = interaction.member
+        
+        //removendo cargo de Não-verificado
+        novoUser.roles.remove('1194646146325426176');
+        
+        if (user.curso === 'frontend') {
           
-          
-        } else {
-          
-          console.log('CPF bate com o cadastrado')
-          
-          //resposta ao usuário
-          interaction.editReply(
-            `${user.userName} é um aluno do curso de ${user.curso} do turno da ${user.horario}.`
-          );
-
-          const novoUser = interaction.member
-          
-          //removendo cargo de Não-verificado
-          novoUser.roles.remove('1194646146325426176');
-          
-          if (user.curso === 'frontend') {
+          //passando o cargo
+          novoUser.roles.add(idCargoFront);
+        } else if (user.curso === 'backend') {
+          //passando o cargo
+          novoUser.roles.add(idCargoBack);
+        };
             
-            //passando o cargo
-            novoUser.roles.add(idCargoFront);
-          } else if (user.curso === 'backend') {
-            //passando o cargo
-            novoUser.roles.add(idCargoBack);
-          };
-            
-        }
+        
       } else { // caso o usuário não exista no BD
-        /* user = new User({
-          ...query,
-          lastDaily: new Date(), //data atual
-        }) */
-        interaction.editReply('Usuário não exite no banco de dados')
+        
+        interaction.editReply(`Não consegui encontrar seu CPF no banco de dados! 😒 Entre em contato com o Adm do curso.`)
         return;
       }
 
@@ -84,12 +83,14 @@ module.exports = {
   
   name: 'verify',
   description: 'Verifica se o novo usuário é um aluno',
+  ephemeral: true,
   options: [
     {
       name: 'cpf',
       description: 'Digite seu CPF:',
       required: true,
       type: ApplicationCommandOptionType.String,
+      ephemeral: true,
     }
   ]
 }
