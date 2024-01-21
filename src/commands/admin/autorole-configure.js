@@ -53,6 +53,7 @@ module.exports = {
   },
   name: 'autorole-configure',
   description: 'Configura seu auto-role para este servidor.',
+  devOnly: true,
   options: [
     {
       name: 'role',
