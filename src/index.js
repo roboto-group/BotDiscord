@@ -13,7 +13,12 @@ const client = new Client({
     IntentsBitField.Flags.MessageContent,
   ],
 });
-
+client.on('message', (msg) => {
+  const isWelcomeMessage = msg.type === 'GUILD_MEMBER_JOIN'
+  if (isWelcomeMessage) {
+    client.channels.cache.get('1194645892607783034').send(` seja bem vindo ao Servidor!!!`)
+  };
+});
 //Function expression
 (async() => {
   try {
